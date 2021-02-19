@@ -1,0 +1,27 @@
+Fibonacci Numbers
+
+Of course, my first instinct was to write this function recursively, which worked for lower integers, but started taking its time with double-digit numbers, only to completely hang up on 100 - at which point I terminated it.
+
+Following that fiasco I started thinking about how to write it in terms of a for-loop.  Keeping in mind that we only need to store three numbers at a time, I went ahead and defined the first two of them, assigning them to the variables: first_number_in_sequence and second_number_in_sequence. Even though we're working under the assumption that the sequence consists of positive integers, I figured it would be useful to make a check against negative numbers and zero anyway.  I expressed that in form of a conditional.
+
+To generate a number in the Fibonacci sequence, we need exactly two numbers.  The first two numbers in the sequence are 0 and 1.  These numbers are not arithmetically generated, so the function can return them in response to 1 and 2 respectively.  The second and third conditions address this observation.
+
+To provide for any integer that is greater than 2, I used a for-loop ranging from 2 inclusive, to a user-defined number exclusive.  I used a for-loop so that the program could iterate through all the integers in the range starting with 2, all the way to the integer defined by the user, which in this case would be necessary to arrive at the correct Fibonacci number.  To account for the upper bound being exclusive, I incremented it by 1.  
+
+To calculate a number in the sequence, I created a variable "next_number_in_sequence".  The variable takes the values of the preceding two variables (I.e. first_number_in_sequence and second_number_in_sequence) and sums them up, returning a number.  Once the number has been computed, the program needs to increment the counter by 1 position, so that the first_number_in_sequence becomes the second_number_in_sequence, and the second_number_in_sequence becomes the next_number_in_sequence.  This operation continues until the program reaches the number input by the user.  The final next_number_in_sequence thus outputs the corresponding Fibonacci number.  The program then prints it to the console.
+
+
+Bigrams
+
+The first step was to define the variable "sequence".  As we are processing text, I assumed that the values passed into the function will be strings.  If we want to make the program more bulletproof, we can add a function converting the input into a string.
+
+The assignment asks to take a string and generate a list of bigrams (lists of two strings).  To that end, we need the program to first split whatever string we are working with into separate words, or smaller strings.  sequence = sequence.split(" ") does just that, as it splits the string by spaces between individual words.  
+
+The next step is for the program to define a variable 'bigram' and assign it an empty list.  This is an empty container we will use to iterate over the text. The iteration will proceed with a for-loop taking a variable word_in_sequence and iterating it over all words in the sequence.  For that to happen, the script needs to know how long the sequence actually is.  To do that, I used the len function.  The range of iteration will thus start with position 0, which is the first word in the sequence and end with the last position, equal the computed length of the sequence.
+
+The program starts with the word in the first position, or 0.  At that point we only have one word to work with, which is insufficient to generate a bigram.  The program thus skips forward with 'continue'.  
+
+Otherwise, if there is more than one word in a sequence (i.e. word_in_sequence >= 1) the script takes the word in the position indicated by the value of word_in_sequence, and decrements it by one.  This should output the first word in the bigram.  The second word in the bigram is designated by the value of the word_in_sequence variable and as such, appended to the first word.  Each word is a string of characters.  A list of two such strings forms a bigram.
+
+The for loop iterates over all elements in the sequence, as indicated by len(sequence), outputting a list of lists of strings (bigrams). Having reached the end of the sequence, the script stops.
+

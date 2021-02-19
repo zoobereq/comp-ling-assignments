@@ -1,0 +1,20 @@
+Gettysburg vowels
+
+I started by defining the variable “address”, and assigning to it the string of the Gettysburg Address.  Here I ran into a problem, whereby the text was not continuous, but rather broken into lines, preventing it from being iterated over.  I eliminated the line breaks and put the entire string on one line.  I suspect there may be a more elegant way to do this, which I’m not yet aware of.  The next step was to define the variable, I called “vowel_counter”.  The purpose of this variable is to count and store the instances of vowels in the “address” string.  Since the program will be summing up the vowels starting from 0, the variable was set to 0.  Following the hints in the assignment, I defined a for-loop iterating over the “address” string, such that for each “vowel” character in the string, the loop will have to check if that character is an actual vowel.  To that end, I wrote a condition checking if a ‘“vowel” character belongs to the string of vowels defined as “aeiouAEIOU”.  I chose to use a string rather than a list or a tuple, because the latter two wouldn’t be compatible with strings.  I also didn’t remember if python differentiates between lower and upper-case characters, so I included both.  My intuition was that if the above condition evaluates to True, i.e. if the character in the “address” string is in the “aeiouAEIOU” string, then the counter should increase by 1.  The process would then repeat until every character in the string has been checked, and the counter updated accordingly.  It turned out I was correct, as evidenced by the print( ) function revealing the correct number of all vowels in the string.
+
+
+FizzBuzz
+
+This one ended up being trickier than the first  task.  I started with defining a for-loop iterating over numbers in the range from 1 to 100.  Since python includes the first value and excludes the last one, the range is actually from 1 to 101.  The default interval is 1, so it didn’t need to be defined here.  Having the range is place, I proceeded to work on conditional statements.  To see if a number is divisible by another number, the modulo operator can be used.  If a number modulo 3 is equal to 0 (i.e. produces no fractions) then that number is divisible by 3. The analogous is true for numbers that are divisible by 5.  If the above two conditions evaluate to True, then the program should “fizz” and “buzz” respectively.  
+
+What was tricky, was numbers divisible both by 3 and by 5.  In my original code, I addressed that condition in the following form:  if number % 3 == 0 and number % 5 == 0: print(“fizzbuzz”), and placed it after the first two conditions.  It did not work as intended.  The program kept printing either “fizz” or “buzz” but never “fizzbuzz”.  I tried replacing the “and” condition with number % 15 == 0, since everything that’s divisible by both 3 and 5 must also be divisible by 15.  To no avail.  It wasn’t until I went over the notes on the order of operations in for-loops when I realized what was happening.  
+
+If a number is divisible by 3 then the condition is true, “fizz” gets printed, and the program loops back to the next number in range.  At that point the program doesn’t care if the number is also divisible by 5.  The analogous is true for numbers divisible by 5 that may or may not be divisible by 3.  The program prints “buzz” and loops back to the next element in range.  Since “fizzbuzz” requires that a number be divisible by both 3 and 5, that condition needs to be met first.  It is only when it evaluates to False, then the program should check if the number is divisible by 3. If it is, “fizz” prints, and we loop back to the next number.  If it isn’t, we move on to the next condition checking if the number is divisible by 5.  If it is, the program prints “buzz”, and if not, the program prints a number divisible neither by 3, nor 5, nor 15.
+
+Kyle's solution to FizzBuzz
+
+For i in range(1, 1 + 100):
+	if i % 3 == 0:
+		if i % 5 == 0:
+
+Aaaand didn't get the rest
